@@ -1,0 +1,12 @@
+.dockerignore
+.DS_Store
+.env.local.php
+.eslintignore
+.eslintrc
+.git*
+.idea
+docker-compose.yml
+symfony.lock
+/test/
+/var/
+/vendor/

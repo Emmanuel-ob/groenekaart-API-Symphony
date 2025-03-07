@@ -1,0 +1,13 @@
+api_platform:
+    title: Template API
+    version: 1.0.0
+    formats:
+        jsonapi: ['application/vnd.api+json']
+    patch_formats:
+        jsonapi: ['application/vnd.api+json']
+    error_formats:
+        jsonapi: ['application/vnd.api+json']
+    defaults:
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']

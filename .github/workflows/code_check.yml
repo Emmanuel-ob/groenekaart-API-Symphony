@@ -1,0 +1,28 @@
+name: code check
+run-name: ${{ github.actor }} is checking and fixing their code
+on: [ push ]
+jobs:
+  code_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.4
+
+      - name: check code style
+        uses: php-actions/phpcs@v1
+        with:
+          version: composer
+          php_version: 8.4
+          standard: phpcs.xml
+          path: /
+
+      - name: phpstan check
+        uses: php-actions/phpstan@v3
+        with:
+          version: composer
+          php_version: 8.4
