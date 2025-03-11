@@ -1,9 +1,9 @@
 # Strips the make target from the input args
-API_CONTAINER = 'template_api'
-MYSQL_CONTAINER = 'template_mysql'
+API_CONTAINER = 'groenekaart_api'
+MYSQL_CONTAINER = 'groenekaart_mysql'
 API_EXEC = docker exec -it $(API_CONTAINER) sh -c
 MYSQL_EXEC = docker exec -it $(MYSQL_CONTAINER) sh -c
-DATABASES = api_template
+DATABASES = groenekaart
 ARGS= ''
 
 -include $(PWD)/Makefile.local

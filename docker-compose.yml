@@ -1,6 +1,6 @@
 services:
   api:
-    container_name: template_api
+    container_name: groenekaart_api
     depends_on:
       - mysql
     build:
@@ -8,11 +8,13 @@ services:
       dockerfile: fpm-dev.Dockerfile
 #      dockerfile: fpm.Dockerfile
     environment:
-      MYSQL_NAME: 'api_template'
+      MYSQL_NAME: 'groenekaart'
       MYSQL_HOST: 'mysql'
       MYSQL_USER: 'root'
       MYSQL_SERVER_VERSION: '8.0.39'
       CORS_ALLOW_ORIGIN: '*'
+      ACCESS_API_URL: ${ACCESS_API_URL}
+      ACCESS_API_TOKEN: ${ACCESS_API_TOKEN}
     ports:
       - '9000:9000'
     volumes:
@@ -26,7 +28,7 @@ services:
         target: /var/www/nginx/public
 
   nginx:
-    container_name: template_nginx
+    container_name: groenekaart_nginx
     depends_on:
       - api
     build:
@@ -41,12 +43,13 @@ services:
       - '8008:80'
 
   mysql:
-    container_name: template_mysql
+    container_name: groenekaart_mysql
     image: mysql:8.0.39
     ports:
       - '4306:3306'
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: 'groenekaart'
     volumes:
       - db:/var/lib/mysql
     healthcheck:
