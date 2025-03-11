@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -36,7 +37,7 @@ use ApiPlatform\Metadata\Get;
     ]
 )]
 
-class VehicleController
+class VehicleController extends AbstractController
 {
   #[Route(
     path: '/opvragen',
@@ -67,7 +68,7 @@ class VehicleController
   )]
   public function doCleanup(
     Request $request,
-    #[MapQueryParameter('validity_period')] string $validityPeriod,
+    #[MapQueryParameter('validity_period')] ?string $validityPeriod,
     ApiKeyAuthenticator $apiAuth
   ): JsonResponse {
     try {
