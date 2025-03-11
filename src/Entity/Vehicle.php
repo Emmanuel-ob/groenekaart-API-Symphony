@@ -31,7 +31,7 @@ class Vehicle
   #[ORM\Column(name: "email_address", length: 255)]
   private string $emailAddress;
 
-  public function __construct(string $licensePlate, string $vehicle, string $organization, string $category, string $salutation, string $emailAddress)
+  public function __construct(string $licensePlate, string $vehicle, string $organization, string $category, string $emailAddress, ?string $salutation = null)
   {
     $this->licensePlate = $licensePlate;
     $this->vehicle = $vehicle;
